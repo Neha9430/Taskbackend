@@ -5,11 +5,12 @@ import {
     updateInward,
     deleteInward
 } from '../controller/inwardController.js';
+import { verifyToken } from '../middlware/auth.js';
 
 const router = express.Router();    
-router.post("/", addInward);          // ➕ add
-router.get("/", getInward);           // 📄 list
-router.put("/:id", updateInward);     // ✏️ edit
-router.delete("/:id", deleteInward);  // ❌ delete
+router.post("/",verifyToken, addInward);          // ➕ add
+router.get("/", verifyToken,getInward);           // 📄 list
+router.put("/:id", verifyToken,updateInward);     // ✏️ edit
+router.delete("/:id",verifyToken, deleteInward);  // ❌ delete
 
 export default router;

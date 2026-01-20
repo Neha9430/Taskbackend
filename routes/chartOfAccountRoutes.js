@@ -4,14 +4,14 @@ import {
   addChartOfAccount,
   updateChartOfAccount,
   deleteChartOfAccount,
-
 } from "../controller/chartOfAccountController.js";
+import { verifyToken } from "../middlware/auth.js";
 
 const router = express.Router();
 
-router.get("/", getChartOfAccounts);   // GET /api/chart-of-accounts
-router.post("/", addChartOfAccount);   // POST /api/chart-of-accounts
-router.put("/:id", updateChartOfAccount);
-router.delete("/:id", deleteChartOfAccount);
+router.get("/", verifyToken, getChartOfAccounts); // GET /api/chart-of-accounts
+router.post("/", verifyToken, addChartOfAccount); // POST /api/chart-of-accounts
+router.put("/:id", verifyToken, updateChartOfAccount);
+router.delete("/:id", verifyToken, deleteChartOfAccount);
 
 export default router;

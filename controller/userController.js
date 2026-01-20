@@ -3,7 +3,6 @@ import bcrypt from "bcryptjs";
 import jwt from "jsonwebtoken";
 
 //========SIGN UP=======//
-
 export const registerUser = async (req, res) => {
   try {
     const { name, email, password } = req.body;
@@ -29,7 +28,6 @@ export const registerUser = async (req, res) => {
 };
 
 //=========LOGIN========//
-
 export const loginUser = async (req, res) => {
   try {
     const { email, password } = req.body;

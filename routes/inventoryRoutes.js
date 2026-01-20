@@ -5,12 +5,13 @@ import {
   updateInventory,
   deleteInventory,
 } from "../controller/inventoryController.js";
+import { verifyToken } from "../middlware/auth.js";
 
 const router = express.Router();
 
-router.post("/", addInventory);        // ➕ add
-router.get("/", getInventory);         // 📄 list
-router.put("/:id", updateInventory);   // ✏️ edit
-router.delete("/:id", deleteInventory);// ❌ delete
+router.post("/", verifyToken, addInventory);        // ➕ add
+router.get("/",verifyToken, getInventory);         // 📄 list
+router.put("/:id", verifyToken,updateInventory);   // ✏️ edit
+router.delete("/:id",verifyToken, deleteInventory);// ❌ delete
 
 export default router;
