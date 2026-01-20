@@ -6,10 +6,9 @@ import Item from "../models/Item.js";
 
 const router = express.Router();
 
-router.get("/stats",async (req , res) => {
-    try{
-        
-         const totalEmployee = await Employee.countDocuments();
+router.get("/stats", async (req, res) => {
+  try {
+    const totalEmployee = await Employee.countDocuments();
     const totalCustomer = await Customer.countDocuments();
     const totalStores = await Store.countDocuments();
     const totalItems = await Item.countDocuments();
@@ -20,9 +19,10 @@ router.get("/stats",async (req , res) => {
       totalStores,
       totalItems,
     });
-    } catch(error){
-        res.status(500).json({ message:error.message});
-    }
+  } catch (error) {
+    console.log(error);
+    res.status(500).json({ message: error.message });
+  }
 });
 
 export default router;
