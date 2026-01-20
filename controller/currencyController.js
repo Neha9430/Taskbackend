@@ -1,4 +1,4 @@
-import Currency from "../models/currency.js";
+import Currency from "../models/Currency.js";
 
 // ➕ ADD
 export const addCurrency = async (req, res) => {
